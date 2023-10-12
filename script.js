@@ -1,44 +1,11 @@
-const lookup = {
-  A: "N",
-  B: "O",
-  C: "P",
-  D: "Q",
-  E: "R",
-  F: "S",
-  G: "T",
-  H: "U",
-  I: "V",
-  J: "W",
-  K: "X",
-  L: "Y",
-  M: "Z",
-  N: "A",
-  O: "B",
-  P: "C",
-  Q: "D",
-  R: "E",
-  S: "F",
-  T: "G",
-  U: "H",
-  V: "I",
-  W: "J",
-  X: "K",
-  Y: "L",
-  Z: "M"
-};
+ function  rot13(){
+            const inputText = document.getElementById("code").value
+            const decodedText = decodeROT13(inputText);
+            document.getElementById('result').innerText = decodedText;
+        }
 
-function rot13(encodedStr) {
-  const mode = encodedStr ? 1 : 2;
-  encodedStr = encodedStr ?? document.getElementById("code").value;
-  const message = encodedStr
-    .toUpperCase()
-    .split("")
-    .map((char) => lookup[char])
-    .join("");
-
-  return mode === 1
-    ? message
-    : (document.getElementById("result").innerText = message);
-}
-
-window.rot13 = rot13;
+        function decodeROT13(encodedText) {
+          return  encodedText.replace(/[A-Z]/g, (char) => {
+                return String.fromCharCode(((char.charCodeAt(0) - 65 + 13) % 26) + 65);
+            });
+        }
