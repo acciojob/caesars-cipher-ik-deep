@@ -1,7 +1,7 @@
  function  rot13(){
             const inputText = document.getElementById("code").value
             const decodedText = decodeROT13(inputText);
-            document.getElementById('result').innerText = decodedText;
+            document.getElementById('result').innerText = '"'+decodedText'"';
         }
 
         function decodeROT13(encodedText) {
